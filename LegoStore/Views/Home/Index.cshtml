@@ -1,0 +1,11 @@
+﻿@using LegoStore.Models
+@using LegoStore.HtmlHelpers
+@model ProductListViewModel
+
+@{
+    ViewBag.Title = "Products Store";
+}
+
+<div class="container">
+    @Html.Action("ProductsRow", "Home", new { page = ViewBag.productPage })
+</div>
