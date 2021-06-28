@@ -19,6 +19,10 @@ namespace Domain.Entities
         public string Phone { get; set; }
         public int Age { get; set; }
 
+        public int RoleId { get; set; }
+        public Role Role { get; set; }
+        
+
 
         //public virtual ICollection<Order> Orders { get; set; }
 
@@ -26,5 +30,11 @@ namespace Domain.Entities
         {
             Orders = new List<Order>();
         }*/
+    }
+    public class Role
+    {
+       [Key]
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

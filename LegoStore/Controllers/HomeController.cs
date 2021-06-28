@@ -21,6 +21,11 @@ namespace LegoStore.Controllers
 
         public ActionResult Index(int productPage = 1)
         {
+            //string result = "not login";
+            //if (User.Identity.IsAuthenticated)
+            //{
+                //result = "your login" + User.Identity.Name;
+            //}
             ViewBag.productPage = productPage;
             return View();
         }
@@ -42,6 +47,13 @@ namespace LegoStore.Controllers
             };
 
             return PartialView(model);
+        }
+
+        [Authorize(Roles = "admin")]
+        public ActionResult About()
+        {
+            ViewBag.Message = "vgvrfgb rgvregregreg";
+            return View();
         }
     }
 }

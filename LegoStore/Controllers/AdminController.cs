@@ -10,15 +10,18 @@ namespace LegoStore.Controllers
 {
     public class AdminController : Controller
     {
+
+
         IProductRepository productRepository;
 
         public AdminController(IProductRepository repo)
         {
             productRepository = repo;
         }
-
+        
         public ActionResult Index()
         {
+            
             return View(productRepository.Products);
         }
 

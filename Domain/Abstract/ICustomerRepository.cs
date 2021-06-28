@@ -12,5 +12,6 @@ namespace Domain.Abstract
         IEnumerable<Customer> Customers { get; }
         void SaveCustomer(Customer customer);
         void DeleteCustomer(Customer customer);
+        //void LoginCustomer(Customer customer);
     }
 }

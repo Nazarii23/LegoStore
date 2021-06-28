@@ -13,42 +13,64 @@ namespace LegoStore.Controllers
     public class AccountController : Controller
     {
         // GET: Account
+        
+        ICustomerRepository customerRepository;
+        
+        public AccountController(ICustomerRepository cust)
+        {
+            
+            customerRepository = cust;
+        }
+
         public ActionResult Login()
         {
             return View();
         }
 
-        //IProductRepository productRepository;
-        ICustomerRepository customerRepository;
-        //public AccountController(IProductRepository repo, ICustomerRepository cust)
-        public AccountController(ICustomerRepository cust)
-        {
-            //productRepository = repo;
-            customerRepository = cust;
-        }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model)
+        public ActionResult Login(Customer customer)
         {
             if (ModelState.IsValid)
             {
-                Customer user = null;
-                user = customerRepository.Customers.FirstOrDefault(u => u.Email == model.Email && u.Password == model.Password);
+                
+                customer = customerRepository.Customers.FirstOrDefault(cus => cus.Email == customer.Email && cus.Password == customer.Password);
+                
+                //Customer customer = customerRepository.Customers.FirstOrDefault(p => p.CustomerId == CustomerId);
+                //customerRepository.SaveCustomer(customer);
+                //TempData["message"] = string.Format("Product \"{0}\" are successful created", customer.Email);
 
-                if (user != null)
+                if (customer != null)
                 {
-                    FormsAuthentication.SetAuthCookie(model.Email, true);
-                    return RedirectToAction("Index", "Home");
+                    FormsAuthentication.SetAuthCookie(customer.Email, true);
                 }
                 else
                 {
-                    ModelState.AddModelError(" ", "Niema takiego logina");
+                    ModelState.AddModelError("", "user with this username or password was not found");
+                    return View(customer);
                 }
             }
-            return View(model);
+            
+            
+
+            return RedirectToAction("Index", "Home");
         }
+        /* public ActionResult Login(Customer customer)
+         {
+             if(ModelState.IsValid)
+             {
+                 customerRepository.LoginCustomer(customer);
+                 TempData["message"] = string.Format("Product \"{0}\" are successful created", customer.Email);
+             }
 
+             else
+             {
+                 return View(customer);
+             }
 
+             return RedirectToAction("Index", "Home");
+
+         }*/
         public ActionResult Register()
         {
             return View(new Customer());
@@ -60,14 +82,23 @@ namespace LegoStore.Controllers
         {
             if (ModelState.IsValid)
             {
+                //customer = customerRepository.Customers.FirstOrDefault(x => x.CustomerId == customer.CustomerId);
+                customer.RoleId = 2;
                 customerRepository.SaveCustomer(customer);
+                
                 TempData["message"] = string.Format("Product \"{0}\" are successful created", customer.Email);
-            }
-            else
-            {
-                return View(customer);
-            }
+                if (customer != null)
+                {
+                    FormsAuthentication.SetAuthCookie(customer.Email, true);
+                }
 
+                else
+                {
+                    ModelState.AddModelError("", "the user is already registered");
+                    return View(customer);
+                }
+            }
+            
             return RedirectToAction("Index","Home");
         }
 

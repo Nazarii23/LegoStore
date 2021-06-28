@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Domain.Concrete
 {
     public class CustomerRepository : ICustomerRepository
@@ -18,6 +19,7 @@ namespace Domain.Concrete
 
         public void SaveCustomer(Customer customer)
         {
+            
             if (customer.CustomerId == 0)
             {
                 context.Customers.Add(customer);
@@ -25,7 +27,7 @@ namespace Domain.Concrete
             else
             {
                 Customer dbCustomer = context.Customers.Find(customer.CustomerId);
-
+                
                 if (dbCustomer != null)
                 {
                     dbCustomer.Email = customer.Email;
@@ -35,10 +37,42 @@ namespace Domain.Concrete
                     dbCustomer.Phone = customer.Phone;
                     //dbCustomer.Orders = customer.Orders;
                 }
-            }
 
+                
+
+            }
             context.SaveChanges();
         }
+
+        /*public void LoginCustomer(Customer customer)
+        {
+            Customer dbCustomer = context.Customers.Find(customer.CustomerId);
+
+            if (dbCustomer != null)
+            {
+                dbCustomer.Email = customer.Email;
+                dbCustomer.Password = customer.Password;
+                //dbCustomer.Orders = customer.Orders;
+            }
+ 
+        }*/
+        /*
+        public void LoginCustomer(Customer customer)
+        {
+            if (customer.CustomerId != 0)
+            {
+                context.Customers.Find(customer.CustomerId);
+            }
+            else 
+            {
+                Customer dbCustomer = context.Customers.Find(customer.CustomerId);
+                if (dbCustomer != null)
+                {
+                    context.Customers.FirstOrDefault(cus => cus.Email == customer.Email && cus.Password == customer.Password);
+                }
+                context.Customers.FirstOrDefault(cus => cus.Email == customer.Email && cus.Password == customer.Password);
+            }
+        }*/
 
         public void DeleteCustomer(Customer customer)
         {
