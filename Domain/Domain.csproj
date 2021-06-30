@@ -61,6 +61,7 @@
     <Compile Include="Concrete\GeneralContext.cs" />
     <Compile Include="Concrete\LegoStoreContext.cs" />
     <Compile Include="Concrete\ProductRepository.cs" />
+    <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

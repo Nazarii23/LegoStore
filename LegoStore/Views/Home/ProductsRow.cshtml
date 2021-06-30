@@ -1,18 +1,12 @@
 ﻿@model LegoStore.Models.ProductListViewModel
+
 @using LegoStore.HtmlHelpers
 
-@foreach (var p in @Model.Products)
+@foreach (var p in Model.Products)
 {
-    <div class="well">
-        <h3>
-            <strong>@p.Name</strong>
-            <span class="pull-right label label-primary">@p.Price.ToString("# zl")</span>
-        </h3>
-        <span class="lead">@p.Interest</span>
-        <span class="media-left">@p.Age</span>
-
-    </div>
+    @Html.Partial("Products_summery", p)
 }
+
 <!--Own helper that connected on the top of the file.-->
 <div class="float-right" style="margin-bottom: 5px;">
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", "Home", new { productPage = x }))
