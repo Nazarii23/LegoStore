@@ -6,9 +6,17 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .navbar-right {
+            float: right !important;
+            margin-right: 15px;
+            margin-left: 15px;
+        }
+    </style>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
+  
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -22,7 +30,11 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
+
                 </ul>
+                <div">
+                    @Html.Action("Summary", "Cart")
+                </div>
             </div>
         </div>
     </div>

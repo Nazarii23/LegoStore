@@ -1,0 +1,54 @@
+﻿@model LegoStore.Models.CartIndexViewModel
+
+@{
+    ViewBag.Title = "ProductsStore: Twój koszyk zakupuw";
+}
+
+<style>
+    #cartTable td {vertical-align:middle;}
+</style>
+
+<h2>ViewBag.Title</h2>
+
+<table id="cartTable" class="table">
+    <thead>
+        <tr>
+            <th>Ilość</th>
+            <th>Nazwa produktu</th>
+            <th class="text-right">Cena</th>
+            <th class="text-right">Suma</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var line in Model.Cart.lines)
+        { 
+            <tr>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-left">@line.product.Name - @line.product.Interest</td>
+                <td class="text-right">@line.product.Price.ToString("# zł")</td>
+                <td class="text-right">@((line.Quantity * line.product.Price).ToString("# zł"))</td>
+                <td>
+                    @using(Html.BeginForm("RemoveFromCart", "Cart"))
+                     {
+                        @Html.Hidden("ProductId", line.product.ProductId)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="btn btn-sm btn-warning" type="submit" value="Skasować" />
+                     }
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Wynik</td>
+            <td class="text-right">
+                @Model.Cart.ComputeTotalValue().ToString("# zł")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">kontynuować zakupy</a>
+</div>
+

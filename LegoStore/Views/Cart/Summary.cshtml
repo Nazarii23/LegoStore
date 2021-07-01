@@ -1,0 +1,19 @@
+﻿@model Domain.Entities.Cart
+
+@{
+    ViewBag.Title = "Summary";
+}
+
+
+
+<div class="navbar-right">
+    @Html.ActionLink("Zamówić", "Index", "Cart",
+    new { returnUrl =  Request.Url.PathAndQuery},
+    new { @class = "btn btn-default navbar-btn" })
+</div="navbar-text>
+
+<div class="navbar-text navbar-right">
+    <b>Twój koszyk</b>
+    @Model.lines.Sum(x => x.Quantity) productów,
+    @Model.ComputeTotalValue().ToString("# zł")
+</div>
