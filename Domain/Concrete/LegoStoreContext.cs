@@ -13,6 +13,7 @@ namespace Domain.Concrete
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Role> Roles { get; set; }
 
 

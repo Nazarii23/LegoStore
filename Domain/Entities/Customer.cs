@@ -24,11 +24,11 @@ namespace Domain.Entities
         
 
 
-        //public virtual ICollection<Order> Orders { get; set; }
+        //public virtual ICollection<OrderDetails> Orders { get; set; }
 
         /*public Customer()
         {
-            Orders = new List<Order>();
+            Orders = new List<OrderDetails>();
         }*/
     }
     public class Role

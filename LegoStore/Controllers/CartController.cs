@@ -12,9 +12,12 @@ namespace LegoStore.Controllers
     public class CartController : Controller
     {
         private IProductRepository productRepository;
-        public CartController(IProductRepository repo)
+        private IOrderRepository orderRepository;
+
+        public CartController(IProductRepository repo, IOrderRepository order)
         {
             productRepository = repo;
+            orderRepository = order;
         }
 
         public ViewResult Index(Cart cart, string returnUrl)
@@ -61,6 +64,33 @@ namespace LegoStore.Controllers
         public PartialViewResult Summary(Cart cart)
         {
             return PartialView(cart);
+        }
+
+        public ViewResult Checkout()
+        {
+            return View(new OrderDetail());
+        }
+
+        [HttpPost]
+        public ViewResult Checkout(Cart cart, OrderDetail orderDetails)
+        {
+            if(cart.lines.Count() == 0)
+            {
+                ModelState.AddModelError("", "przepraszam, koszyk jest pusty");
+            }
+
+            if(ModelState.IsValid)
+            {
+                orderRepository.SaveOrder(orderDetails);
+                cart.Clear();
+                return View("Completed");
+            }
+
+            else
+            {
+                return View(new OrderDetail());
+            }
+            
         }
     }
 }

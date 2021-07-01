@@ -17,11 +17,11 @@ namespace Domain.Entities
 
         public int Price { get; set; }
 
-        //public virtual ICollection<Order> Orders { get; set; }
+        //public virtual ICollection<OrderDetail> OrderDetails { get; set; }
 
         /*public Product()
         {
-            Orders = new List<Order>();
+            OrderDetails = new List<OrderDetail>();
         }*/
     }
 }

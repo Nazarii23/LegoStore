@@ -33,7 +33,7 @@ namespace LegoStore.Infrastructure
         {
             kernel.Bind<IProductRepository>().To<ProductRepository>();
             kernel.Bind<ICustomerRepository>().To<CustomerRepository>();
-            //kernel.Bind<IOrderRepository>().To<OrderRepository>();
+            kernel.Bind<IOrderRepository>().To<OrderRepository>();
         }
     }
 }

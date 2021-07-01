@@ -56,17 +56,57 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\ICustomerRepository.cs" />
+    <Compile Include="Abstract\IOrderRepository.cs" />
     <Compile Include="Abstract\IProductRepository.cs" />
     <Compile Include="Concrete\CustomerRepository.cs" />
     <Compile Include="Concrete\GeneralContext.cs" />
     <Compile Include="Concrete\LegoStoreContext.cs" />
+    <Compile Include="Concrete\OrderRepository.cs" />
     <Compile Include="Concrete\ProductRepository.cs" />
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Customer.cs" />
+    <Compile Include="Entities\OrderDetail.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Migrations\202106281728446_InitialCreate.cs" />
+    <Compile Include="Migrations\202106281728446_InitialCreate.designer.cs">
+      <DependentUpon>202106281728446_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107012102355_OrderDetail.cs" />
+    <Compile Include="Migrations\202107012102355_OrderDetail.designer.cs">
+      <DependentUpon>202107012102355_OrderDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107012135498_OrderDetail1.cs" />
+    <Compile Include="Migrations\202107012135498_OrderDetail1.designer.cs">
+      <DependentUpon>202107012135498_OrderDetail1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107012220478_OrderDetail2.cs" />
+    <Compile Include="Migrations\202107012220478_OrderDetail2.designer.cs">
+      <DependentUpon>202107012220478_OrderDetail2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107012224394_OrderDetail_Time.cs" />
+    <Compile Include="Migrations\202107012224394_OrderDetail_Time.designer.cs">
+      <DependentUpon>202107012224394_OrderDetail_Time.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202106281728446_InitialCreate.resx">
+      <DependentUpon>202106281728446_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107012102355_OrderDetail.resx">
+      <DependentUpon>202107012102355_OrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107012135498_OrderDetail1.resx">
+      <DependentUpon>202107012135498_OrderDetail1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107012220478_OrderDetail2.resx">
+      <DependentUpon>202107012220478_OrderDetail2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107012224394_OrderDetail_Time.resx">
+      <DependentUpon>202107012224394_OrderDetail_Time.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

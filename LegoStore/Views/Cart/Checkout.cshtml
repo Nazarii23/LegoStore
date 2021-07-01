@@ -1,0 +1,51 @@
+﻿@model Domain.Entities.OrderDetail
+
+@{
+    ViewBag.Title = "LegoStore: Realizowanie zamówień";
+}
+
+<h2>Realizowanie zamówień</h2>
+<p>proszę podać swoje dane</p>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary();
+    <h3>Dane</h3>
+    <div class="form-group">
+        <label>Twoje imie</label>
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    </div>
+    <h3>Dane</h3>
+    <div class="form-group">
+        <label>Twoj Adres</label>
+        @Html.TextBoxFor(x => x.OrderAdress, new { @class = "form-control" })
+    </div>
+    <h3>Dane</h3>
+    <div class="form-group">
+        <label>Twoje adres meilowy</label>
+        @Html.TextBoxFor(x => x.OrderEmail, new { @class = "form-control" })
+    </div>
+    <h3>Dane</h3>
+    <div class="form-group">
+        <label>Miasto</label>
+        @Html.TextBoxFor(x => x.OrderCity, new { @class = "form-control" })
+    </div>
+    <h3>Dane</h3>
+    <div class="form-group">
+        <label>Kraj</label>
+        @Html.TextBoxFor(x => x.OrderCountry, new { @class = "form-control" })
+    </div>
+
+
+    <h3>Opcje</h3>
+    <div class="form-group">
+        <label>
+            @Html.EditorFor(x => x.GiftWrap)
+            użyj pakowania prezentów
+        </label>
+    </div>
+
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Zamówić" />
+    </div>
+}
