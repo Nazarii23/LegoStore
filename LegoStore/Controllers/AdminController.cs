@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace LegoStore.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
 
@@ -18,6 +19,7 @@ namespace LegoStore.Controllers
         {
             productRepository = repo;
         }
+
         
         public ActionResult Index()
         {

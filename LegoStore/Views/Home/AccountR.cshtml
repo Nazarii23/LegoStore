@@ -1,0 +1,14 @@
+﻿@model Domain.Entities.Customer
+
+@{
+    ViewBag.Title = "AccountR";
+}
+
+<div class="navbar-text navbar-right">
+        @if (User.Identity.IsAuthenticated)
+    {
+        <b>Twój Account</b>
+        @User.Identity.Name;
+    }
+
+</div>

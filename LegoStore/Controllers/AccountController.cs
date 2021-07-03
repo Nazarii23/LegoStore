@@ -10,6 +10,7 @@ using System.Web.Security;
 
 namespace LegoStore.Controllers
 {
+    
     public class AccountController : Controller
     {
         // GET: Account
@@ -100,6 +101,12 @@ namespace LegoStore.Controllers
             }
             
             return RedirectToAction("Index","Home");
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login", "Account");
         }
 
     }

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace LegoStore.Controllers
 {
+    
     public class CartController : Controller
     {
         private IProductRepository productRepository;
@@ -20,6 +21,7 @@ namespace LegoStore.Controllers
             orderRepository = order;
         }
 
+        [Authorize(Roles = "customer")]
         public ViewResult Index(Cart cart, string returnUrl)
         {
             return View(new CartIndexViewModel
