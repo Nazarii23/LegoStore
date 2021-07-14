@@ -1,7 +1,13 @@
 ﻿@model LegoStore.Models.ProductListViewModel
 
 @using LegoStore.HtmlHelpers
-<h3>Dla realizacji zamówienia potrzebno zalogować się</h3>
+
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <h3>Dla realizacji zamówień potrzebno zalogować się</h3>
+    
+}
 
 @foreach (var p in Model.Products)
 {

@@ -24,11 +24,7 @@ namespace LegoStore.Controllers
 
         public ActionResult Index(int productPage = 1)
         {
-            //string result = "not login";
-            //if (User.Identity.IsAuthenticated)
-            //{
-                //result = "your login" + User.Identity.Name;
-            //}
+            
             ViewBag.productPage = productPage;
             return View();
         }
@@ -37,15 +33,7 @@ namespace LegoStore.Controllers
         {
             return PartialView(customer);
         }
-        /*public string RealAccount()
-        {
-            string result = "not login";
-            if (User.Identity.IsAuthenticated)
-            {
-                result = "your login" + User.Identity.Name;
-            }
-            return result;
-        }*/
+        
 
         public PartialViewResult ProductsRow(int page = 1)
         {

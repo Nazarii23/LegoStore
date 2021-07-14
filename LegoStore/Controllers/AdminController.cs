@@ -11,22 +11,17 @@ namespace LegoStore.Controllers
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
-
-
         IProductRepository productRepository;
 
         public AdminController(IProductRepository repo)
         {
             productRepository = repo;
-        }
-
-        
+        }   
         public ActionResult Index()
         {
             
             return View(productRepository.Products);
         }
-
         public ActionResult Edit(int productID)
         {
             Product product = productRepository.Products.FirstOrDefault(p => p.ProductId == productID);
@@ -49,7 +44,6 @@ namespace LegoStore.Controllers
                 return View(product);
             }
         }
-
         public ActionResult CreateProduct()
         {
             return View(new Product());
